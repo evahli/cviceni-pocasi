@@ -92,16 +92,21 @@ const predpoved = [
   },
 ];
 
+/* const articleId = window.location.hash.slice(1);
+const articleData = articles.find((article) => article.id === articleId);*/
+
+
+const dayName = window.location.hash.slice(1);
+
+// rozsekava pole na jednotlive objekty: 
+const forecastData = predpoved.find((dayOfWeek) => dayOfWeek.id === dayName);
+
+
+
 const mainElement = document.querySelector('main');
 
-predpoved.forEach((dayOfWeek) => {
-  mainElement.innerHTML += `
-    <div>
-      <h2>${dayOfWeek.den}</h2>
-      <p>${dayOfWeek.popis_pocasi}</p>
-      <a href="detail.html#${dayOfWeek.id}">Přečíst celou predpoved</a>
-    </div>
-  `;
-});
-
-
+mainElement.innerHTML += `
+<h2>${forecastData.den}</h2>
+<h3>${forecastData.datum}</h3>
+<p>${forecastData.stav_pocasi}</p>
+ <p>${forecastData.popis_pocasi}</p>`
